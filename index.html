@@ -18,20 +18,27 @@
       text-align: center;
     }
   </style>
-  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_API_KEY">
-</script>
+  
+  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA7ygSuWG5jHTooS96r-p7nPD7gCdWTpNA">
+  </script>
+  <script type='text/javascript' src='./config.js'></script>
+  <script type="text/javascript" src="./city.js"></script>
 <script>
+  var googlegeocodekey = config.GOOGLE_GEO;
+  var openWeatherMapKey = config.OPEN_WEATHER;
   var map;
   var geoJSON;
   var request;
   var gettingData = false;
-  var openWeatherMapKey = "YOUR_OPENWEATHERMAP_API_KEY"
   var lati;
   var longi;
   var myLatLng;
+
+  
+ 
   function initialize() {
     var mapOptions = {
-      zoom: 10,
+      zoom: 12,
       center: new google.maps.LatLng(-50, 50)
     };
     map = new google.maps.Map(document.getElementById('map-canvas'),
@@ -61,7 +68,7 @@
   }
   
   function setupGeoLocator(){ 
-  var reqString = "https://maps.googleapis.com/maps/api/geocode/json?address=Kolkata&key=YOUR_GOOGLE_GEOCODE_API_KEY";
+  var reqString = "https://maps.googleapis.com/maps/api/geocode/json?address="+city+"&key="+googlegeocodekey;
     var req = new XMLHttpRequest();
     req.open("get", reqString);
     req.responseType = 'json';
